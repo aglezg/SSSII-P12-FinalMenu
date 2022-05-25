@@ -1,4 +1,4 @@
-# Práctica 12: Menú con todas las práctica
+# Práctica 12: Menú con todas las prácticas
 
 ## Información de la práctica
 Esta práctica consiste en incluir un **menú** con el que se puede acceder a **todas las prácticas** realizadas a lo largo de la asignatura. Además, se incluye una implementación del protocolo _Feige-Fiat-Shamir_ considerando los datos secretos como entrada y el resto de parámetros como salida.
