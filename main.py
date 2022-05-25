@@ -1,7 +1,7 @@
 # ----------------------------------------------------------------
-# Práctica 7: Modos de cifrado en bloque
+# Práctica 12: Menú con todas las prácticas
 # Asignatura: Seguridad en Sistemas Informáticos
-# Fecha de entrega: 20/04/2022
+# Fecha de entrega: 26/05/2022
 # Autor:
 # - Adrián González Galván
 # - alu0101321219@ull.edu.es
@@ -9,39 +9,79 @@
 # En este fichero se incluye el desarrollo del menú de la práctica.
 # ----------------------------------------------------------------
 
-from functions import *
-from aesOperations import *
+import os
+
+# Limpia la pantalla de la terminal
+def cleanTerminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+# Obtenemos la ruta de los archivos de las distintas prácticas
+dirname = os.path.dirname(__file__)
+p1 = os.path.join(dirname, 'P1-Vernam\\')
+p2 = os.path.join(dirname, 'P2-RC4\\')
+p3 = os.path.join(dirname, 'P3-ChaCha20\\')
+p4 = os.path.join(dirname, 'P4-CA_de_GPS\\')
+p5 = os.path.join(dirname, 'P5-Mult_SNOW3G_AES\\')
+p6 = os.path.join(dirname, 'P6-AES\\')
+p7 = os.path.join(dirname, 'P7-CBC\\')
+p8 = os.path.join(dirname, 'P8-DH_ElGamal\\')
+p9 = os.path.join(dirname, 'P9-RSA\\')
+
+# Importamos los dierctorios obtenidos
 import sys
+sys.path.insert(0, p1)
+sys.path.insert(1, p2)
+sys.path.insert(2, p3)
+sys.path.insert(3, p4)
+sys.path.insert(4, p5)
+sys.path.insert(5, p6)
+sys.path.insert(6, p7)
+sys.path.insert(7, p8)
+sys.path.insert(8, p9)
+
+import vernam, rc4, chacha20, CAdeGPS, mult_SNOW3G_AES, aes, cbc, dh_ElGamal, rsa
+
+# Menú a implementar
+def show_menu():
+  print('   [1] Práctica 1: Entrega Vernam')
+  print('   [2] Práctica 2: Entrega RC4')
+  print('   [3] Práctica 3: Entrega ChaCha20')
+  print('   [4] Práctica 4: Entrega C/A de GPS')
+  print('   [5] Práctica 5: Entrega Multiplicación en SNOW 3G y AES')
+  print('   [6] Práctica 6: Entrega AES')
+  print('   [7] Práctica 7: Entrega Modos de Cifrado en Bloque')
+  print('   [8] Práctica 8: Entrega DH y Cifrado de ElGamal')
+  print('   [9] Práctica 9: Entrega RSA')
+  print('   [exit] Salir ')
 
 # Main
-cleanTerminal()
-print("\n PRÁCTICA 8: Modos de cifrado en bloque (CBC)\n")
-
-# Lectura de opciones
-key = input("  Clave: ")
-if (len(key.replace(' ', '')) != 32 or isHexadecimalString(key) == False):
-  sys.exit('La clave introducida no es correcta...')
-iv = input("  IV: ")
-if (len(iv.replace(' ', '')) != 32 or isHexadecimalString(iv) == False):
-  sys.exit('El vector de inicialización introducido no es correcta...')
-numberOfBlocks= input('  Número de bloques a introducir: ')
-if (numberOfBlocks.isnumeric() == False):
-  sys.exit('El número de bloques a introducir debe ser un número')
-blocks = []
-while (len(blocks) < int(numberOfBlocks)):
-  auxBlock = input('    Bloque ' + str(len(blocks) + 1) + ': ')
-  if (len(auxBlock.replace(' ', '')) != 32 or isHexadecimalString(auxBlock) == False):
-    sys.exit('La clave introducida no es correcta...')
-  blocks.append(stringToMatrix(auxBlock))
-
-# Transformamos las cadenas leídas en matrices
-key_matrix = stringToMatrix(key)
-iv_matrix = stringToMatrix(iv)
-
-# CBC
-print()
-it = 0
-while (it < len(blocks)):
-  iv_matrix = AESEncrypt(addRoundKey(blocks[it], iv_matrix), key_matrix)
-  print('  > Bloque ' + str(it + 1) + ' de texto cifrado: ' + matrixToString(iv_matrix))
-  it+= 1
+option = ''
+while (option != 'exit'):
+  cleanTerminal()
+  print("\n PRÁCTICA 12: Menú con todas las prácticas de la asignatura\n")
+  show_menu()
+  option = input('\n      >> ')
+  if (option == '1'):
+    vernam.p1Vernam()
+  elif (option == '2'):
+    rc4.p2RC4()
+  elif (option == '3'):
+    chacha20.p3Chacha20()
+  elif (option == '4'):
+    CAdeGPS.p4CAdeGPS()
+  elif (option == '5'):
+    mult_SNOW3G_AES.p5Mult_SNOW3G_AES()
+  elif (option == '6'):
+    aes.p6AES()
+  elif (option == '7'):
+    cbc.p7CBC()
+  elif (option == '8'):
+    dh_ElGamal.p8ElGamal()
+  elif (option == '9'):
+    rsa.p9RSA()
+  elif (option == 'exit'):
+    break
+  else:
+    print('\nOpción incorrecta, inténtelo de nuevo...')
+  if (option != 'exit'):
+    input('\nPresiona Enter para continuar...')
