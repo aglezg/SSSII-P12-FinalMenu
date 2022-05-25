@@ -26,6 +26,7 @@ p6 = os.path.join(dirname, 'P6-AES\\')
 p7 = os.path.join(dirname, 'P7-CBC\\')
 p8 = os.path.join(dirname, 'P8-DH_ElGamal\\')
 p9 = os.path.join(dirname, 'P9-RSA\\')
+p12 = os.path.join(dirname, 'P12-Feige_Fiat_Shamir\\')
 
 # Importamos los dierctorios obtenidos
 import sys
@@ -38,8 +39,9 @@ sys.path.insert(5, p6)
 sys.path.insert(6, p7)
 sys.path.insert(7, p8)
 sys.path.insert(8, p9)
+sys.path.insert(9, p12)
 
-import vernam, rc4, chacha20, CAdeGPS, mult_SNOW3G_AES, aes, cbc, dh_ElGamal, rsa
+import vernam, rc4, chacha20, CAdeGPS, mult_SNOW3G_AES, aes, cbc, dh_ElGamal, rsa, feige_fiat_shamir
 
 # Menú a implementar
 def show_menu():
@@ -52,6 +54,7 @@ def show_menu():
   print('   [7] Práctica 7: Entrega Modos de Cifrado en Bloque')
   print('   [8] Práctica 8: Entrega DH y Cifrado de ElGamal')
   print('   [9] Práctica 9: Entrega RSA')
+  print('   [10] Práctica 12: Protocolo de Feige-Fiat-Shamir')
   print('   [exit] Salir ')
 
 # Main
@@ -79,6 +82,8 @@ while (option != 'exit'):
     dh_ElGamal.p8ElGamal()
   elif (option == '9'):
     rsa.p9RSA()
+  elif (option == '10'):
+    feige_fiat_shamir.p12FeigeFiatShamir()
   elif (option == 'exit'):
     break
   else:
