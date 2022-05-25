@@ -1,9 +1,9 @@
-# Práctica 7: Modos de cifrado en bloque
+# Práctica 12: Menú con todas las práctica
 
 ## Información de la práctica
-* Prática implementada: [PRÁCTICA: RIJNDAEL](https://campusingenieriaytecnologia2122.ull.es/pluginfile.php/3595/mod_assign/intro/Practica8ModoCBC.pdf)
+Esta práctica consiste en incluir un **menú** con el que se puede acceder a **todas las prácticas** realizadas a lo largo de la asignatura. Además, se incluye una implementación del protocolo _Feige-Fiat-Shamir_ considerando los datos secretos como entrada y el resto de parámetros como salida.
 * Lenguaje utilizado: Python
-* Fecha de entrega: 21/04/2022
+* Fecha de entrega: 26/05/2022
 
 ## Acerca de
 - Universidad de La Laguna (ULL)
@@ -15,4 +15,4 @@
   - alu0101321219@ull.edu.es
 
 ## Interpretación y ejecución
-- Ejecutar `$ python main.py`.
+- Ejecutar `$ python main.py` o `$ py main.py`
