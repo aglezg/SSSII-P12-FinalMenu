@@ -87,6 +87,6 @@ while (option != 'exit'):
   elif (option == 'exit'):
     break
   else:
-    print('\nOpción incorrecta, inténtelo de nuevo...')
+    print('\nOpción incorrecta...')
   if (option != 'exit'):
     input('\nPresiona Enter para continuar...')
