@@ -52,6 +52,8 @@ def p12FeigeFiatShamir():
     mcd, e = extendedEuclides(int(value), n)
     if (mcd != 1):
       sys.exit('Los valores de "s" deben ser primos con n = ' + str(n) + '...')
+    if (int(value) <= 0 or int(value) > n):
+      sys.exit('ERROR: 0 < secreto < n')
     s.append(int(value))
 
   # Identificación pública de A
